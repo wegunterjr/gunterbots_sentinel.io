@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GN2R BOTS - Robotics Intro!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Nautical Parchment -->
+    <!-- Application Structure Plan: The application is designed as a single-page, vertical-scrolling journey, akin to following a treasure map. A sticky top navigation allows users to jump between key sections (The Map, What is Robotics?, Legends, Our Quest, The Treasure), encouraging non-linear exploration. This thematic structure is more engaging than a static slideshow. Key interactions include a clickable map for navigation, dynamic tabs with charts to compare different robots, and hover-to-reveal tooltips for the GN2R Bot components, all designed to make learning active and intuitive. -->
+    <!-- Visualization & Content Choices: 
+        - Agenda -> Goal: Navigate -> Viz: HTML/CSS Diagram + JS Scroll -> Justification: More thematic and interactive than a list.
+        - Robot Comparison -> Goal: Compare/Inform -> Viz: Chart.js Bar Chart + JS Tabs -> Justification: Visually represents key strengths (e.g., Manta's endurance vs. Atlas's agility) and allows easy comparison between different types of advanced robots.
+        - GN2R Bot Parts -> Goal: Inform/Organize -> Viz: HTML/CSS Diagram + JS Hover Tooltips -> Justification: Encourages discovery and is more engaging than a static bullet point list.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FDF6E3; 
+        }
+        h1, h2, h3, h4, .font-pirate {
+            font-family: 'IM Fell English SC', serif;
+        }
+        .nav-link {
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #D35400;
+            border-bottom-color: #D35400;
+        }
+        .tab-button {
+            transition: all 0.3s;
+        }
+        .tab-button.active {
+            background-color: #D35400 !important;
+            color: #FDF6E3 !important;
+        }
+        .component-hotspot {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px dashed #D35400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .component-hotspot:hover {
+            background-color: rgba(211, 84, 0, 0.3);
+            transform: scale(1.1);
+        }
+        .component-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .component-hotspot:hover .component-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        .section-card {
+             background-color: rgba(255, 255, 255, 0.5);
+             border: 1px solid #D2B48C;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+
+    <header id="header" class="bg-[#FDF6E3] bg-opacity-90 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-pirate text-[#2C3E50]">GN2R BOTS</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#map" class="nav-link text-lg">The Map</a>
+                <a href="#what-is-robotics" class="nav-link text-lg">What is Robotics?</a>
+                <a href="#legends" class="nav-link text-lg">Legends</a>
+                <a href="#quest" class="nav-link text-lg">Our Quest</a>
+                <a href="#treasure" class="nav-link text-lg">The Treasure</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">☰</button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#map" class="block py-2 text-lg">The Map</a>
+             <a href="#what-is-robotics" class="block py-2 text-lg">What is Robotics?</a>
+             <a href="#legends" class="block py-2 text-lg">Legends</a>
+             <a href="#quest" class="block py-2 text-lg">Our Quest</a>
+             <a href="#treasure" class="block py-2 text-lg">The Treasure</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="h-[80vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('pirate_flag_maybe.jpg');">
+            <div class="text-center text-[#FDF6E3] bg-black bg-opacity-60 p-8 rounded-lg">
+                <h1 class="text-5xl md:text-8xl font-bold mb-4">Robotics, Rovers, & Riches!</h1>
+                <p class="text-xl md:text-2xl font-light">An Epic Introduction to Building Your First Bot</p>
+                <a href="#map" class="mt-8 inline-block bg-[#D35400] text-white py-3 px-6 rounded-md text-lg font-bold hover:bg-[#E67E22] transition-colors">Start the Adventure</a>
+            </div>
+        </section>
+
+        <section id="map" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-pirate mb-2">Today's Treasure Map</h2>
+                <p class="text-lg text-gray-600 mb-12">Here be the course we're chartin' today, mateys!</p>
+                <div class="relative max-w-4xl mx-auto p-8 rounded-lg">
+                    <div class="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-20" style="background-image: url('https://placehold.co/800x400/000000/ffffff?text=Treasure+Map+Outline&font=pirate');"></div>
+                    <div class="relative grid grid-cols-2 md:grid-cols-5 gap-8">
+                        <a href="#map" class="map-item flex flex-col items-center space-y-2 group">
+                            <span class="text-4xl">📜</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">The Map</h3>
+                        </a>
+                        <a href="#what-is-robotics" class="map-item flex flex-col items-center space-y-2 group">
+                            <span class="text-4xl">🤔</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">What is it?</h3>
+                        </a>
+                        <a href="#legends" class="map-item flex flex-col items-center space-y-2 group">
+                            <span class="text-4xl">🌊</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Legends</h3>
+                        </a>
+                        <a href="#quest" class="map-item flex flex-col items-center space-y-2 group">
+                             <span class="text-4xl">🎯</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Our Quest</h3>
+                        </a>
+                        <a href="#treasure" class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
+                             <span class="text-4xl">💎</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">The Treasure</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what-is-robotics" class="py-20 bg-[#F5EFE1]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-pirate text-center mb-12">What be this "Robotics" Treasure?</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="section-card p-8 rounded-lg">
+                        <h3 class="text-2xl font-pirate mb-4">A Landlubber's Definition</h3>
+                        <p class="text-lg">The scholars say it's the branch of technology that deals with the design, construction, operation, and application of robots.</p>
+                        <p class="mt-4 text-lg">A robot is a machine capable of carrying out a complex series of actions automatically, especially one programmable by a computer.</p>
+                    </div>
+                    <div class="section-card p-8 rounded-lg">
+                        <h3 class="text-2xl font-pirate mb-4">A Pirate's Grog!</h3>
+                        <p class="text-lg mb-6">But for a pirate, it's a potent mix of three powerful ingredients:</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center space-x-4"><span class="text-3xl">⚙️</span> <div><h4 class="font-bold">Mechanical Contraptions</h4><p>The ship's hull and cannons!</p></div></li>
+                            <li class="flex items-center space-x-4"><span class="text-3xl">⚡️</span> <div><h4 class="font-bold">Electrical Wizardry</h4><p>The lightning in the storm!</p></div></li>
+                            <li class="flex items-center space-x-4"><span class="text-3xl">💻</span> <div><h4 class="font-bold">Computer Sorcery</h4><p>The mystical chants that guide the ship!</p></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legends" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-pirate text-center mb-12">Legends of the Robotic Seas</h2>
+                <div class="flex justify-center mb-8 flex-wrap gap-2">
+                    <button class="tab-button active bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="manta">Manta Ray</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="spot">Spot</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="spot2">Spot Mini</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="warehouse">Warehouse Bots</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="edp">Engineering Design Process</button>
+                </div>
+                <div class="section-card p-8 rounded-lg grid md:grid-cols-2 gap-8 items-center">
+                    <div id="tab-content">
+                        <!-- Content will be injected by JS -->
+                    </div>
+                    <div>
+                         <div class="chart-container h-80 md:h-96 w-full max-w-lg mx-auto">
+                            <canvas id="bot-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quest" class="py-20 bg-[#F5EFE1]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-pirate mb-12">Our Robot - The Wave Rover</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center text-left">
+                     <div class="relative max-w-md mx-auto">
+                        <img src="Large Logo.png" alt="GN2R Bot" class="w-full rounded-lg">
+                        <div class="component-hotspot" style="top: 20%; left: 45%;">
+                            <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                <strong>The Captain (Brains)</strong><br>A Raspberry Pi fits right in the head, makin' all the decisions!
+                            </div>
+                        </div>
+                        <div class="component-hotspot" style="top: 55%; left: 45%;">
+                             <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                <strong>The First Mate (Muscle)</strong><br>The body houses the motor drivers that take the Captain's orders!
+                            </div>
+                        </div>
+                         <div class="component-hotspot" style="top: 25%; left: 20%;">
+                             <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                <strong>The Lookout (Eyes)</strong><br>A camera or sensor can act as the eyes, keeping a sharp lookout for treasure!
+                            </div>
+                        </div>
+                         <div class="component-hotspot" style="top: 80%; left: 65%;">
+                             <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                <strong>The Navigator (Senses)</strong><br>Sensors in the hands or feet help it navigate the treacherous terrain!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-card p-8 rounded-lg">
+                        <h3 class="text-3xl font-pirate mb-4">Meet the Wave Rover!</h3>
+                        <p class="text-lg mb-6">This is our real robot for adventure and learning. GN2R is your guide, but the Wave Rover is the star of our journey! Hover over the hotspots on the image to learn about its parts.</p>
+                        <ul class="space-y-4 text-lg">
+                            <li><strong>Tough as barnacles:</strong> A sturdy chassis ready for adventure.</li>
+                            <li><strong>Customizable Crew:</strong> Ready to be outfitted with all manner of sensors and gadgets.</li>
+                            <li><strong>The Pride of the Fleet:</strong> The Wave Rover is the perfect bot to begin your robotics journey!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="treasure" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-4xl font-pirate mb-12">The Pirate's Quest (Our Goals!)</h2>
+                 <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">So what's the grand prize at the end of this map? Our mission with the GN2R Bot is to learn these valuable skills and claim the ultimate treasure: knowledge!</p>
+                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="section-card p-6 rounded-lg text-center">
+                        <span class="text-5xl">🧠</span>
+                        <h3 class="text-2xl font-pirate my-4">Problem-Solving</h3>
+                        <p>How to think like a cunning captain when things go wrong!</p>
+                    </div>
+                     <div class="section-card p-6 rounded-lg text-center">
+                        <span class="text-5xl">🛠️</span>
+                        <h3 class="text-2xl font-pirate my-4">The Three Arts</h3>
+                        <p>Combine electronics, programming, and hardware skills.</p>
+                    </div>
+                     <div class="section-card p-6 rounded-lg text-center">
+                        <span class="text-5xl">💪</span>
+                        <h3 class="text-2xl font-pirate my-4">Hands-On Plunder</h3>
+                        <p>Build a working robot from a pile of parts!</p>
+                    </div>
+                     <div class="section-card p-6 rounded-lg text-center">
+                        <span class="text-5xl">🌟</span>
+                        <h3 class="text-2xl font-pirate my-4">To Be Awesome</h3>
+                        <p>Apply basic skills to create something truly magnificent!</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#2C3E50] text-[#FDF6E3] py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-pirate mb-4">Any Questions for the Captain?</h2>
+            <p>Speak now, or forever hold yer pieces of eight!</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const botData = {
+                manta: {
+                    name: 'Manta Ray',
+                    description: "A ghost of the abyss built by Northrop Grumman. This ain't no ordinary fish, savvy? It's an \"Extra-Large Uncrewed Underwater Vehicle\" that can go on long-range missions for months without a human crew, using a clever buoyancy-driven glider system to save energy.",
+                    image: 'manta-ray-hero.jpg',
+                    stats: { labels: ['Endurance', 'Stealth', 'Payload', 'Agility'], values: [95, 85, 70, 40] },
+                    video: 'https://www.youtube.com/embed/RXkR0K9v5i8?feature=shared'
+                },
+                spot: {
+                    name: 'Boston Dynamics Spot',
+                    description: 'Spot is a nimble quadruped robot from Boston Dynamics. It can walk, trot, climb stairs, and navigate challenging environments, making it ideal for inspection, exploration, and carrying payloads.',
+                    image: 'spot-climbs-stairs-min.jpg',
+                    stats: { labels: ['Versatility', 'Agility', 'Autonomy', 'Speed'], values: [90, 85, 75, 65] }
+                },
+                spot2: {
+                    name: 'Spot Mini',
+                    description: 'A loyal companion, also from Boston Dynamics. Spot can dance a jig, open doors, and inspect dangerous locations. It is a versatile quadrapedal robot designed for a variety of sensing and manipulation tasks.',
+                    image: 'https://placehold.co/600x400/F1C40F/2C3E50?text=Spot+Mini',
+                    stats: { labels: ['Versatility', 'Agility', 'Autonomy', 'Speed'], values: [90, 85, 75, 65] }
+                },
+                warehouse: {
+                    name: 'Warehouse Bots',
+                    description: 'These industrial armies are the unsung heroes of logistics. Swarms of these robots work in giant warehouses, moving treasure (packages) faster than any pirate crew could ever dream of.',
+                    image: 'https://placehold.co/600x400/E67E22/FFFFFF?text=Warehouse+Bots',
+                    stats: { labels: ['Efficiency', 'Speed', 'Reliability', 'Coordination'], values: [99, 80, 95, 92] }
+                },
+                edp: {
+                    name: 'Engineering Design Process',
+                    description: 'Engineers use a step-by-step process to solve problems and create amazing things. Here is the process diagram and a fun video about engineering and tacos!',
+                    image: 'YES-EDP-middle-school.png',
+                    video: 'https://www.youtube.com/embed/MAhpfFt_mWM?feature=shared'
+                }
+            };
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContent = document.getElementById('tab-content');
+            const chartContainer = document.querySelector('.chart-container');
+            let botChart;
+
+            function renderTab(botKey) {
+                const data = botData[botKey];
+                let html = '';
+                if (botKey === 'edp') {
+                    html += `<div class="flex flex-col md:flex-row max-w-6xl mx-auto p-8 bg-white bg-opacity-80 rounded-lg shadow-lg gap-12 items-start">`;
+                    html += `<div class="md:w-7/12 w-full flex flex-col items-center">`;
+                    html += `<h3 class="text-3xl font-pirate mb-4">${data.name}</h3>`;
+                    html += `<p class="text-lg mb-4">${data.description}</p>`;
+                    html += `<img src="${data.image}" alt="Engineering Design Process Diagram" class="mx-auto mb-6 max-w-xl rounded-lg shadow-lg">`;
+                    html += `<div class="mt-8 w-full flex justify-center"><iframe width="560" height="315" src="${data.video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="mx-auto w-full max-w-xl rounded-lg shadow-lg"></iframe></div>`;
+                    html += `</div>`;
+                    html += `<div class="md:w-5/12 w-full px-2 md:px-6">`;
+                    html += `</div>`;
+                    html += `</div>`;
+                    chartContainer.style.display = 'none';
+                } else {
+                    html += `<div class="md:w-full">`;
+                    html += `<h3 class="text-3xl font-pirate mb-4">${data.name}</h3>`;
+                    html += `<p class="text-lg mb-4">${data.description}</p>`;
+                    html += `<img src="${data.image}" alt="${data.name}" class="w-full rounded-lg shadow-lg">`;
+                    if (data.video) {
+                        html += `<div class="mt-8"><iframe width="560" height="315" src="${data.video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="mx-auto w-full max-w-xl rounded-lg shadow-lg"></iframe></div>`;
+                    }
+                    html += `</div>`;
+                    chartContainer.style.display = '';
+                }
+                tabContent.innerHTML = html;
+                if (data.stats) {
+                    renderChart(data);
+                } else if (botChart) {
+                    botChart.destroy();
+                }
+            }
+
+            function renderChart(data) {
+                const chartCtx = document.getElementById('bot-chart').getContext('2d');
+                if (botChart) {
+                    botChart.destroy();
+                }
+                botChart = new Chart(chartCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.stats.labels,
+                        datasets: [{
+                            label: 'Key Attributes',
+                            data: data.stats.values,
+                            backgroundColor: 'rgba(211, 84, 0, 0.5)',
+                            borderColor: 'rgba(211, 84, 0, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderTab(button.dataset.bot);
+                });
+            });
+
+            // Default tab
+            renderTab('manta');
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
