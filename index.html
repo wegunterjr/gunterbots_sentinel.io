@@ -16,6 +16,7 @@
         - Robot Comparison -> Goal: Compare/Inform -> Viz: Chart.js Bar Chart + JS Tabs -> Justification: Visually represents key strengths (e.g., Manta's endurance vs. Atlas's agility) and allows easy comparison between different types of advanced robots.
         - GN2R Bot Parts -> Goal: Inform/Organize -> Viz: HTML/CSS Diagram + JS Hover Tooltips -> Justification: Encourages discovery and is more engaging than a static bullet point list.
     -->
+
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -80,6 +81,7 @@
                 <a href="#legends" class="nav-link text-lg">Legends</a>
                 <a href="#quest" class="nav-link text-lg">Our Quest</a>
                 <a href="#treasure" class="nav-link text-lg">The Treasure</a>
+                <a href="casting-our-own-wheels.html" class="nav-link text-lg">Casting Our Own Wheels</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-2xl">☰</button>
         </nav>
@@ -89,11 +91,12 @@
              <a href="#legends" class="block py-2 text-lg">Legends</a>
              <a href="#quest" class="block py-2 text-lg">Our Quest</a>
              <a href="#treasure" class="block py-2 text-lg">The Treasure</a>
+             <a href="casting-our-own-wheels.html" class="block py-2 text-lg">Casting Our Own Wheels</a>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="h-[80vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('pirate_flag_maybe.jpg');">
+        <section id="hero" class="h-[80vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('assets/pirate_flag_maybe.jpg');">
             <div class="text-center text-[#FDF6E3] bg-black bg-opacity-60 p-8 rounded-lg">
                 <h1 class="text-5xl md:text-8xl font-bold mb-4">Robotics, Rovers, & Riches!</h1>
                 <p class="text-xl md:text-2xl font-light">An Epic Introduction to Building Your First Bot</p>
@@ -183,7 +186,7 @@
                 <h2 class="text-4xl font-pirate mb-12">Our Robot - The Wave Rover</h2>
                 <div class="grid md:grid-cols-2 gap-8 items-center text-left">
                      <div class="relative max-w-md mx-auto">
-                        <img src="Large Logo.png" alt="GN2R Bot" class="w-full rounded-lg">
+                        <img src="assets/Large Logo.png" alt="GN2R Bot" class="w-full rounded-lg">
                         <div class="component-hotspot" style="top: 20%; left: 45%;">
                             <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
                                 <strong>The Captain (Brains)</strong><br>A Raspberry Pi fits right in the head, makin' all the decisions!
@@ -261,14 +264,14 @@
                 manta: {
                     name: 'Manta Ray',
                     description: "A ghost of the abyss built by Northrop Grumman. This ain't no ordinary fish, savvy? It's an \"Extra-Large Uncrewed Underwater Vehicle\" that can go on long-range missions for months without a human crew, using a clever buoyancy-driven glider system to save energy.",
-                    image: 'manta-ray-hero.jpg',
+                    image: 'assets/manta-ray-hero.jpg',
                     stats: { labels: ['Endurance', 'Stealth', 'Payload', 'Agility'], values: [95, 85, 70, 40] },
                     video: 'https://www.youtube.com/embed/RXkR0K9v5i8?feature=shared'
                 },
                 spot: {
                     name: 'Boston Dynamics Spot',
                     description: 'Spot is a nimble quadruped robot from Boston Dynamics. It can walk, trot, climb stairs, and navigate challenging environments, making it ideal for inspection, exploration, and carrying payloads.',
-                    image: 'spot-climbs-stairs-min.jpg',
+                    image: 'assets/spot-climbs-stairs-min.jpg',
                     stats: { labels: ['Versatility', 'Agility', 'Autonomy', 'Speed'], values: [90, 85, 75, 65] }
                 },
                 spot2: {
@@ -286,7 +289,7 @@
                 edp: {
                     name: 'Engineering Design Process',
                     description: 'Engineers use a step-by-step process to solve problems and create amazing things. Here is the process diagram and a fun video about engineering and tacos!',
-                    image: 'YES-EDP-middle-school.png',
+                    image: 'assets/YES-EDP-middle-school.png',
                     video: 'https://www.youtube.com/embed/MAhpfFt_mWM?feature=shared'
                 }
             };
