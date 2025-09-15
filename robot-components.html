@@ -27,18 +27,47 @@
     </style>
 </head>
 <body class="text-gray-800">
-    <header class="bg-[#FDF6E3] bg-opacity-90 backdrop-blur-sm sticky top-0 z-50 shadow-md">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-pirate text-[#2C3E50]">GN2R BOTS</a>
-            <div class="space-x-8">
-                <a href="index.html#map" class="nav-link text-lg">The Map</a>
-                <a href="index.html#what-is-robotics" class="nav-link text-lg">What is Robotics?</a>
-                <a href="index.html#legends" class="nav-link text-lg">Legends</a>
-                <a href="index.html#quest" class="nav-link text-lg">Our Quest</a>
-                <a href="index.html#treasure" class="nav-link text-lg">The Treasure</a>
-            </div>
-        </nav>
-    </header>
+        <header class="bg-[#FDF6E3] bg-opacity-90 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+                <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+                        <a href="index.html" class="text-2xl font-pirate text-[#2C3E50]">GN2R BOTS</a>
+                        <div class="space-x-8">
+                                <a href="index.html#map" class="nav-link text-lg">The Map</a>
+                                <a href="index.html#what-is-robotics" class="nav-link text-lg">What is Robotics?</a>
+                                <a href="index.html#legends" class="nav-link text-lg">Legends</a>
+                                <a href="index.html#quest" class="nav-link text-lg">Our Quest</a>
+                                <a href="index.html#treasure" class="nav-link text-lg">The Treasure</a>
+                        </div>
+                </nav>
+        </header>
+        <!-- Interactive List of Robot Components -->
+        <section class="container mx-auto px-4 py-6">
+            <h2 class="text-2xl font-pirate mb-4 text-[#2C3E50]">Quick Navigation: Robot Components</h2>
+            <ul id="component-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(0)">The Brain: ESP32 Development Board</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(1)">The Muscles: N20 Motor</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(2)">The Nerves: Motor Drivers</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(3)">The Heart: Power Sources</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(4)">The Skeleton & Veins: Breadboards & Jumper Wires</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(5)">The Indicators: LEDs & Resistors</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(6)">The Senses: Photoresistor & Ultrasonic Sensor</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(7)">The Face: OLED Display</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(8)">The Controls: Push Button & Wireless Keyboard</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(9)">The Manipulator & Vision: Robotic Arm & Camera</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(10)">The Supercomputer Brain: Raspberry Pi</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(11)">The Garage: Storage & Organization</button></li>
+                <li><button class="w-full text-left px-4 py-2 bg-yellow-100 rounded hover:bg-yellow-200 transition" onclick="scrollToComponent(12)">The Anatomy: How It All Connects</button></li>
+            </ul>
+        </section>
+        <script>
+            function scrollToComponent(idx) {
+                const items = document.querySelectorAll('main ol > li');
+                if (items[idx]) {
+                    items[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    items[idx].classList.add('ring-4', 'ring-orange-400');
+                    setTimeout(() => items[idx].classList.remove('ring-4', 'ring-orange-400'), 1200);
+                }
+            }
+        </script>
     <main class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-pirate mb-6 text-[#2C3E50]">Robot Components: ESP32 Robotics & Electronics Project Guide</h1>
         <ol class="list-decimal pl-6 space-y-4">
