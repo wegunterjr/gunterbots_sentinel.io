@@ -41,51 +41,27 @@
         </nav>
     </header>
     <main class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-pirate mb-6 text-[#2C3E50]">Casting Our Own Wheels: ESP32 Robotics & Electronics Project Guide</h1>
-    <ol class="list-decimal pl-6 space-y-4">
-        <li><strong>The Brain: ESP32 Development Board</strong><br>
-            The ESP32 Development Board is the brain of your project. It's a powerful, low-cost microcontroller with built-in Wi-Fi and Bluetooth, making it perfect for robotics and IoT projects. The ESP-WROOM-32 module contains the main chip, and the CP2102 chip allows it to connect to a computer for programming.
-        </li>
-        <li><strong>The Muscles: N20 High Torque Speed Reduction Motor</strong><br>
-            These N20 High Torque Speed Reduction Motors are your robot's muscles. With a built-in gearbox, they reduce speed while significantly increasing torque, providing the necessary power for movements like driving wheels or operating a robotic arm. The 12V 200RPM rating indicates their operating voltage and speed.
-        </li>
-        <li><strong>The Nerves: Motor Drivers</strong><br>
-            Motor drivers act as the nervous system, translating the brain's (ESP32) low-power signals into high-power commands for the muscles (motors). Both the L298N and the more efficient DRV8833 are dual H-bridge drivers, allowing you to control the speed and direction of two motors.
-        </li>
-        <li><strong>The Heart: Power Sources</strong><br>
-            The heart of any robot is its power source. 18650 Li-ion rechargeable batteries are high-capacity cells that provide a steady supply of energy. A portable battery pack is a convenient, all-in-one unit that can be charged via USB and used to power the entire system, making your robot portable.
-        </li>
-        <li><strong>The Skeleton & Veins: Breadboards & Jumper Wires</strong><br>
-            The Elegoo Mini Breadboard is your robot's temporary skeleton, providing a structure to quickly connect components without soldering. Elegoo Jumper Wires are the veins, carrying power and data signals between the different parts of the robot.
-        </li>
-        <li><strong>The Indicators: LEDs & Resistors</strong><br>
-            LEDs are the robot's lights, used for status indicators, signaling, or even adding a personal touch. Resistors (like the 220 Ohm and 330 Ohm varieties) are crucial for protecting the LEDs and other components by limiting the flow of electrical current.
-        </li>
-        <li><strong>The Senses: Photoresistor & Ultrasonic Sensor</strong><br>
-            These are the robot's core senses. A Photoresistor detects light levels, allowing the robot to "see" how bright its environment is. The Ultrasonic Distance Sensor (HC-SR04) acts as a form of sonar, measuring the time it takes for a sound wave to bounce back to determine the distance to an object.
-        </li>
-        <li><strong>Advanced Senses: Line Follower & RGB LEDs</strong><br>
-            A Line Follower Sensor is a specialized sensor that allows the robot to "see" and follow a line on the ground, making it ideal for navigation. RGB LED modules (WS2812B NeoPixel) are addressable, full-color lights that can be used to display complex status patterns or simply to add vibrant flair.
-        </li>
-        <li><strong>The Voice & Face: Buzzer & OLED Display</strong><br>
-            The Buzzer is the robot's voice, providing audio feedback with beeps, tones, or alarms. The OLED Display is its face, a small screen that can display text, graphics, and data, allowing for richer communication between the robot and its user.
-        </li>
-        <li><strong>The Controls: Push Button & Wireless Keyboard</strong><br>
-            These are your primary interfaces for controlling the robot. A simple Push Button can be used to start a routine or change a mode. A Wireless Keyboard offers more complex control, allowing you to type commands and interact with the robot's system directly.
-        </li>
-        <li><strong>The Manipulator & Vision: Robotic Arm & Camera</strong><br>
-            A Robotic Arm Kit gives the robot the ability to interact with its physical world, with SG90/MG90S servos acting as its joints. A Camera Module (ESP32-CAM) provides a dedicated vision system, allowing the robot to see its surroundings, capture images, or stream video.
-        </li>
-        <li><strong>The Supercomputer Brain: Raspberry Pi</strong><br>
-            For projects requiring advanced computing, such as machine learning or complex AI, a Raspberry Pi is the ultimate brain upgrade. This single-board computer is far more powerful than the ESP32 and runs a full operating system. It requires a MicroSD Card for its OS and a dedicated Power Supply.
-        </li>
-        <li><strong>The Garage: Storage & Organization</strong><br>
-            Keeping your components organized is essential. IRIS USA Storage Bins provide a durable and stackable solution for storing larger parts and project materials, while Tire Molds and other small containers are perfect for sorting smaller components.
-        </li>
-        <li><strong>The Anatomy: How It All Connects</strong><br>
-            The ESP32 (brain) receives input from sensors (eyes) and controls the motors (muscles) through the motor drivers (nerves). All of these components are connected on a breadboard with jumper wires. Power is supplied by the batteries (heart), and the robot communicates its status using LEDs and the OLED display.
-        </li>
-    </ol>
+</main>
+        <h1 class="text-4xl font-pirate mb-6 text-[#2C3E50]">Casting Our Own Wheels</h1>
+        <div class="section-card p-8 rounded-lg mb-8">
+            <h2 class="text-2xl font-pirate mb-4">How to Cast Your Own Robot Wheels</h2>
+            <p class="text-lg mb-4">Learn how to design, mold, and cast custom wheels for your robotics projects. This guide will walk you through the process, materials, and tips for success.</p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Design:</strong> Sketch or CAD your wheel shape and size.</li>
+                <li><strong>Mold Making:</strong> Use 3D printing, laser cutting, or manual methods to create a mold.</li>
+                <li><strong>Materials:</strong> Choose silicone, urethane, or rubber compounds for casting.</li>
+                <li><strong>Casting:</strong> Mix and pour your material into the mold, let it cure.</li>
+                <li><strong>Finishing:</strong> Trim, drill, and fit your wheels to your robot.</li>
+            </ul>
+            <p class="mt-6 text-lg">Tips: Use release agents for easy demolding, experiment with different compounds for grip, and always wear safety gear!</p>
+        </div>
+        <div class="section-card p-8 rounded-lg">
+            <h2 class="text-xl font-pirate mb-2">Resources & Inspiration</h2>
+            <ul class="list-disc pl-6">
+                <li><a href="https://www.instructables.com/How-to-Make-Robot-Wheels/" class="text-blue-700 underline hover:text-orange-600" target="_blank">Instructables: How to Make Robot Wheels</a></li>
+                <li><a href="https://www.youtube.com/watch?v=example" class="text-blue-700 underline hover:text-orange-600" target="_blank">YouTube: Casting Custom Robot Wheels</a></li>
+            </ul>
+        </div>
 </main>
     <footer class="bg-[#FDF6E3] border-t border-yellow-200 py-4 mt-8 text-center">
         <a href="index.html" class="text-blue-700 underline hover:text-orange-600">&#8592; Back to Home</a>
