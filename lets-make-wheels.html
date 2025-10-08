@@ -21,7 +21,7 @@
     <header class="bg-[#FDF6E3] bg-opacity-90 backdrop-blur-sm sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-pirate text-[#2C3E50]">GN2R BOTS</a>
-            <div class="space-x-8">
+            <div class="hidden md:flex space-x-8">
                 <a href="index.html#map" class="nav-link text-lg">The Map</a>
                 <a href="index.html#what-is-robotics" class="nav-link text-lg">What is Robotics?</a>
                 <a href="index.html#legends" class="nav-link text-lg">Legends</a>
@@ -29,8 +29,21 @@
                 <a href="index.html#treasure" class="nav-link text-lg">The Treasure</a>
                 <a href="robot-components.html" class="nav-link text-lg">Robot Components</a>
                 <a href="lets-make-wheels.html" class="nav-link text-lg active">Let's Make Wheels</a>
+                <a href="circuits.html" class="nav-link text-lg">Circuits</a>
             </div>
+            <button id="mobile-menu-button" class="text-2xl" aria-label="Open menu">☰</button>
         </nav>
+        <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-[#FDF6E3] shadow-lg z-50 hidden flex-col px-6 pb-4 pt-8 transition-transform duration-300">
+            <button id="close-mobile-menu" class="text-2xl absolute top-4 right-6 text-[#2C3E50]" aria-label="Close menu">&times;</button>
+            <a href="index.html#map" class="block py-2 text-lg text-[#2C3E50]">The Map</a>
+            <a href="index.html#what-is-robotics" class="block py-2 text-lg text-[#2C3E50]">What is Robotics?</a>
+            <a href="index.html#legends" class="block py-2 text-lg text-[#2C3E50]">Legends</a>
+            <a href="index.html#quest" class="block py-2 text-lg text-[#2C3E50]">Our Quest</a>
+            <a href="index.html#treasure" class="block py-2 text-lg text-[#2C3E50]">The Treasure</a>
+            <a href="robot-components.html" class="block py-2 text-lg text-[#2C3E50]">Robot Components</a>
+            <a href="lets-make-wheels.html" class="block py-2 text-lg text-[#2C3E50]">Let's Make Wheels</a>
+            <a href="circuits.html" class="block py-2 text-lg text-[#2C3E50]">Circuits</a>
+        </div>
     </header>
     <main class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-pirate mb-6 text-[#2C3E50]">Let's Make Wheels & Casting Our Own Wheels</h1>
@@ -125,5 +138,20 @@
     <footer class="bg-[#FDF6E3] border-t border-yellow-200 py-4 mt-8 text-center">
         <a href="index.html" class="text-blue-700 underline hover:text-orange-600">&#8592; Back to Home</a>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger menu logic
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
