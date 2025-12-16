@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Chosen Palette: Nautical Parchment -->
     <!-- Application Structure Plan: The application is designed as a single-page, vertical-scrolling journey, akin to following a treasure map. A sticky top navigation allows users to jump between key sections (The Map, What is Robotics?, Legends, Our Quest, The Treasure), encouraging non-linear exploration. This thematic structure is more engaging than a static slideshow. Key interactions include a clickable map for navigation, dynamic tabs with charts to compare different robots, and hover-to-reveal tooltips for the GN2R Bot components, all designed to make learning active and intuitive. -->
     <!-- Visualization & Content Choices: 
@@ -20,26 +22,37 @@
     <style>
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #FDF6E3; 
+            background-color: #FDF6E3;
         }
-        h1, h2, h3, h4, .font-pirate {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-pirate {
             font-family: 'IM Fell English SC', serif;
         }
+
         .nav-link {
             transition: all 0.3s;
             border-bottom: 2px solid transparent;
         }
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover,
+        .nav-link.active {
             color: #D35400;
             border-bottom-color: #D35400;
         }
+
         .tab-button {
             transition: all 0.3s;
         }
+
         .tab-button.active {
             background-color: #D35400 !important;
             color: #FDF6E3 !important;
         }
+
         .component-hotspot {
             position: absolute;
             width: 50px;
@@ -49,25 +62,30 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .component-hotspot:hover {
             background-color: rgba(211, 84, 0, 0.3);
             transform: scale(1.1);
         }
+
         .component-tooltip {
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s;
         }
+
         .component-hotspot:hover .component-tooltip {
             visibility: visible;
             opacity: 1;
         }
+
         .section-card {
-             background-color: rgba(255, 255, 255, 0.5);
-             border: 1px solid #D2B48C;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid #D2B48C;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
 
@@ -81,30 +99,37 @@
                 <a href="#quest" class="nav-link text-lg">Our Quest</a>
                 <a href="#treasure" class="nav-link text-lg">The Treasure</a>
                 <a href="robot-components.html" class="nav-link text-lg">Robot Components</a>
+                <a href="semester_review.html" class="nav-link text-lg font-bold text-[#D35400]">Semester Review</a>
                 <a href="lets-make-wheels.html" class="nav-link text-lg">Let's Make Wheels</a>
                 <a href="circuits.html" class="nav-link text-lg">Circuits</a>
             </div>
             <button id="mobile-menu-button" class="text-2xl" aria-label="Open menu">☰</button>
         </nav>
-        <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-[#FDF6E3] shadow-lg z-50 hidden flex-col px-6 pb-4 pt-8 transition-transform duration-300">
-            <button id="close-mobile-menu" class="text-2xl absolute top-4 right-6 text-[#2C3E50]" aria-label="Close menu">&times;</button>
+        <div id="mobile-menu"
+            class="fixed top-0 right-0 w-64 h-full bg-[#FDF6E3] shadow-lg z-50 hidden flex-col px-6 pb-4 pt-8 transition-transform duration-300">
+            <button id="close-mobile-menu" class="text-2xl absolute top-4 right-6 text-[#2C3E50]"
+                aria-label="Close menu">&times;</button>
             <a href="#map" class="block py-2 text-lg text-[#2C3E50]">The Map</a>
             <a href="#what-is-robotics" class="block py-2 text-lg text-[#2C3E50]">What is Robotics?</a>
             <a href="#legends" class="block py-2 text-lg text-[#2C3E50]">Legends</a>
             <a href="#quest" class="block py-2 text-lg text-[#2C3E50]">Our Quest</a>
             <a href="#treasure" class="block py-2 text-lg text-[#2C3E50]">The Treasure</a>
             <a href="robot-components.html" class="block py-2 text-lg text-[#2C3E50]">Robot Components</a>
+            <a href="semester_review.html" class="block py-2 text-lg text-[#D35400] font-bold">Semester Review</a>
             <a href="lets-make-wheels.html" class="block py-2 text-lg text-[#2C3E50]">Let's Make Wheels</a>
             <a href="circuits.html" class="block py-2 text-lg text-[#2C3E50]">Circuits</a>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="h-[80vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('assets/pirate_flag_maybe.jpg');">
+        <section id="hero" class="h-[80vh] flex items-center justify-center bg-cover bg-center"
+            style="background-image: url('assets/pirate_flag_maybe.jpg');">
             <div class="text-center text-[#FDF6E3] bg-black bg-opacity-60 p-8 rounded-lg">
                 <h1 class="text-5xl md:text-8xl font-bold mb-4">Robotics, Rovers, & Riches!</h1>
                 <p class="text-xl md:text-2xl font-light">An Epic Introduction to Building Your First Bot</p>
-                <a href="#map" class="mt-8 inline-block bg-[#D35400] text-white py-3 px-6 rounded-md text-lg font-bold hover:bg-[#E67E22] transition-colors">Start the Adventure</a>
+                <a href="#map"
+                    class="mt-8 inline-block bg-[#D35400] text-white py-3 px-6 rounded-md text-lg font-bold hover:bg-[#E67E22] transition-colors">Start
+                    the Adventure</a>
             </div>
         </section>
 
@@ -113,7 +138,8 @@
                 <h2 class="text-4xl font-pirate mb-2">Today's Treasure Map</h2>
                 <p class="text-lg text-gray-600 mb-12">Here be the course we're chartin' today, mateys!</p>
                 <div class="relative max-w-4xl mx-auto p-8 rounded-lg">
-                    <div class="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-30" style="background-image: url('assets/treasure_map.png');"></div>
+                    <div class="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-30"
+                        style="background-image: url('assets/treasure_map.png');"></div>
                     <div class="relative grid grid-cols-2 md:grid-cols-5 gap-8">
                         <a href="#map" class="map-item flex flex-col items-center space-y-2 group">
                             <span class="text-4xl">📜</span>
@@ -128,20 +154,25 @@
                             <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Legends</h3>
                         </a>
                         <a href="#quest" class="map-item flex flex-col items-center space-y-2 group">
-                             <span class="text-4xl">🎯</span>
+                            <span class="text-4xl">🎯</span>
                             <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Our Quest</h3>
                         </a>
-                        <a href="#treasure" class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
-                             <span class="text-4xl">💎</span>
+                        <a href="#treasure"
+                            class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
+                            <span class="text-4xl">💎</span>
                             <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">The Treasure</h3>
                         </a>
-                        <a href="robot-components.html" class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
-                             <span class="text-4xl">🤖</span>
-                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Robot Components</h3>
+                        <a href="robot-components.html"
+                            class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
+                            <span class="text-4xl">🤖</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Robot Components
+                            </h3>
                         </a>
-                        <a href="lets-make-wheels.html" class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
-                             <span class="text-4xl">🛞</span>
-                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Let's Make Wheels</h3>
+                        <a href="lets-make-wheels.html"
+                            class="map-item flex flex-col items-center space-y-2 group col-span-2 md:col-span-1">
+                            <span class="text-4xl">🛞</span>
+                            <h3 class="font-pirate text-xl text-[#2C3E50] group-hover:text-[#D35400]">Let's Make Wheels
+                            </h3>
                         </a>
                     </div>
                 </div>
@@ -154,16 +185,33 @@
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="section-card p-8 rounded-lg">
                         <h3 class="text-2xl font-pirate mb-4">A Landlubber's Definition</h3>
-                        <p class="text-lg">The scholars say it's the branch of technology that deals with the design, construction, operation, and application of robots.</p>
-                        <p class="mt-4 text-lg">A robot is a machine capable of carrying out a complex series of actions automatically, especially one programmable by a computer.</p>
+                        <p class="text-lg">The scholars say it's the branch of technology that deals with the design,
+                            construction, operation, and application of robots.</p>
+                        <p class="mt-4 text-lg">A robot is a machine capable of carrying out a complex series of actions
+                            automatically, especially one programmable by a computer.</p>
                     </div>
                     <div class="section-card p-8 rounded-lg">
                         <h3 class="text-2xl font-pirate mb-4">A Pirate's Grog!</h3>
                         <p class="text-lg mb-6">But for a pirate, it's a potent mix of three powerful ingredients:</p>
                         <ul class="space-y-4">
-                            <li class="flex items-center space-x-4"><span class="text-3xl">⚙️</span> <div><h4 class="font-bold">Mechanical Contraptions</h4><p>The ship's hull and cannons!</p></div></li>
-                            <li class="flex items-center space-x-4"><span class="text-3xl">⚡️</span> <div><h4 class="font-bold">Electrical Wizardry</h4><p>The lightning in the storm!</p></div></li>
-                            <li class="flex items-center space-x-4"><span class="text-3xl">💻</span> <div><h4 class="font-bold">Computer Sorcery</h4><p>The mystical chants that guide the ship!</p></div></li>
+                            <li class="flex items-center space-x-4"><span class="text-3xl">⚙️</span>
+                                <div>
+                                    <h4 class="font-bold">Mechanical Contraptions</h4>
+                                    <p>The ship's hull and cannons!</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center space-x-4"><span class="text-3xl">⚡️</span>
+                                <div>
+                                    <h4 class="font-bold">Electrical Wizardry</h4>
+                                    <p>The lightning in the storm!</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center space-x-4"><span class="text-3xl">💻</span>
+                                <div>
+                                    <h4 class="font-bold">Computer Sorcery</h4>
+                                    <p>The mystical chants that guide the ship!</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -174,30 +222,36 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-pirate text-center mb-12">Legends of the Robotic Seas</h2>
                 <div class="flex justify-center mb-8 flex-wrap gap-2">
-                    <button class="tab-button active bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="manta">Manta Ray</button>
-                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="spot">Spot</button>
-                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="spot2">Spot Mini</button>
-                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="warehouse">Warehouse Bots</button>
-                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]" data-bot="edp">Engineering Design Process</button>
+                    <button
+                        class="tab-button active bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]"
+                        data-bot="manta">Manta Ray</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]"
+                        data-bot="spot">Spot</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]"
+                        data-bot="spot2">Spot Mini</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]"
+                        data-bot="warehouse">Warehouse Bots</button>
+                    <button class="tab-button bg-white text-[#2C3E50] py-2 px-5 rounded-md border border-[#D2B48C]"
+                        data-bot="edp">Engineering Design Process</button>
                 </div>
                 <div class="section-card p-8 rounded-lg grid md:grid-cols-2 gap-8 items-center">
                     <div id="tab-content">
                         <!-- Content will be injected by JS -->
                     </div>
                     <div>
-                         <div class="chart-container h-80 md:h-96 w-full max-w-lg mx-auto">
+                        <div class="chart-container h-80 md:h-96 w-full max-w-lg mx-auto">
                             <canvas id="bot-chart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <section id="quest" class="py-20 bg-[#F5EFE1]">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl font-pirate mb-12">Our Robot - The Wave Rover</h2>
                 <div class="grid md:grid-cols-2 gap-8 items-center text-left">
-                     <div class="relative max-w-md mx-auto">
+                    <div class="relative max-w-md mx-auto">
                         <img src="assets/Large Logo.png" alt="GN2R Bot" class="w-full rounded-lg">
                     </div>
                     <div class="section-card p-8 rounded-lg">
@@ -205,35 +259,49 @@
                         <div class="relative max-w-md mx-auto mb-6">
                             <img src="assets/wave_rover_1.png" alt="Wave Rover" class="w-full rounded-lg">
                             <div class="component-hotspot" style="top: 20%; left: 45%;">
-                                <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
-                                    <strong>The Captain (Brains)</strong><br>A Raspberry Pi fits right in the head, makin' all the decisions!
-                                    <img src="assets/raspberry_pi_5_2gb.png" alt="Raspberry Pi" class="w-full mt-2 rounded">
+                                <div
+                                    class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                    <strong>The Captain (Brains)</strong><br>A Raspberry Pi fits right in the head,
+                                    makin' all the decisions!
+                                    <img src="assets/raspberry_pi_5_2gb.png" alt="Raspberry Pi"
+                                        class="w-full mt-2 rounded">
                                 </div>
                             </div>
                             <div class="component-hotspot" style="top: 55%; left: 45%;">
-                                 <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
-                                    <strong>The First Mate (Muscle)</strong><br>The body houses the motor drivers that take the Captain's orders!
+                                <div
+                                    class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                    <strong>The First Mate (Muscle)</strong><br>The body houses the motor drivers that
+                                    take the Captain's orders!
                                     <img src="assets/n20_motor.png" alt="N20 Motor" class="w-full mt-2 rounded">
                                 </div>
                             </div>
-                             <div class="component-hotspot" style="top: 25%; left: 60%;">
-                                 <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
-                                    <strong>The Lookout (Eyes)</strong><br>A camera or sensor can act as the eyes, keeping a sharp lookout for treasure!
+                            <div class="component-hotspot" style="top: 25%; left: 60%;">
+                                <div
+                                    class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                    <strong>The Lookout (Eyes)</strong><br>A camera or sensor can act as the eyes,
+                                    keeping a sharp lookout for treasure!
                                     <img src="assets/pi_camera.png" alt="Pi Camera" class="w-full mt-2 rounded">
                                 </div>
                             </div>
-                             <div class="component-hotspot" style="top: 23%; left: 75%;">
-                                 <div class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
-                                    <strong>The Navigator (Senses)</strong><br>Sensors help it avoid the treacherous terrain!
-                                    <img src="assets/ultrasonic_sensor.png" alt="Ultrasonic Sensor" class="w-full mt-2 rounded">
+                            <div class="component-hotspot" style="top: 23%; left: 75%;">
+                                <div
+                                    class="component-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-center text-sm rounded-lg p-2">
+                                    <strong>The Navigator (Senses)</strong><br>Sensors help it avoid the treacherous
+                                    terrain!
+                                    <img src="assets/ultrasonic_sensor.png" alt="Ultrasonic Sensor"
+                                        class="w-full mt-2 rounded">
                                 </div>
                             </div>
                         </div>
-                        <p class="text-lg mb-6">This is our real robot for adventure and learning. GN2R is your guide, but the Wave Rover is the star of our journey! Hover over the hotspots on the image to learn about its parts.</p>
+                        <p class="text-lg mb-6">This is our real robot for adventure and learning. GN2R is your guide,
+                            but the Wave Rover is the star of our journey! Hover over the hotspots on the image to learn
+                            about its parts.</p>
                         <ul class="space-y-4 text-lg">
                             <li><strong>Tough as barnacles:</strong> A sturdy chassis ready for adventure.</li>
-                            <li><strong>Customizable Crew:</strong> Ready to be outfitted with all manner of sensors and gadgets.</li>
-                            <li><strong>The Pride of the Fleet:</strong> The Wave Rover is the perfect bot to begin your robotics journey!</li>
+                            <li><strong>Customizable Crew:</strong> Ready to be outfitted with all manner of sensors and
+                                gadgets.</li>
+                            <li><strong>The Pride of the Fleet:</strong> The Wave Rover is the perfect bot to begin your
+                                robotics journey!</li>
                         </ul>
                     </div>
                 </div>
@@ -242,30 +310,32 @@
 
         <section id="treasure" class="py-20">
             <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-4xl font-pirate mb-12">The Pirate's Quest (Our Goals!)</h2>
-                 <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">So what's the grand prize at the end of this map? Our mission with the GN2R Bot is to learn these valuable skills and claim the ultimate treasure: knowledge!</p>
-                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <h2 class="text-4xl font-pirate mb-12">The Pirate's Quest (Our Goals!)</h2>
+                <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">So what's the grand prize at the end of this
+                    map? Our mission with the GN2R Bot is to learn these valuable skills and claim the ultimate
+                    treasure: knowledge!</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="section-card p-6 rounded-lg text-center">
                         <span class="text-5xl">🧠</span>
                         <h3 class="text-2xl font-pirate my-4">Problem-Solving</h3>
                         <p>How to think like a cunning captain when things go wrong!</p>
                     </div>
-                     <div class="section-card p-6 rounded-lg text-center">
+                    <div class="section-card p-6 rounded-lg text-center">
                         <span class="text-5xl">🛠️</span>
                         <h3 class="text-2xl font-pirate my-4">The Three Arts</h3>
                         <p>Combine electronics, programming, and hardware skills.</p>
                     </div>
-                     <div class="section-card p-6 rounded-lg text-center">
+                    <div class="section-card p-6 rounded-lg text-center">
                         <span class="text-5xl">💪</span>
                         <h3 class="text-2xl font-pirate my-4">Hands-On Plunder</h3>
                         <p>Build a working robot from a pile of parts!</p>
                     </div>
-                     <div class="section-card p-6 rounded-lg text-center">
+                    <div class="section-card p-6 rounded-lg text-center">
                         <span class="text-5xl">🌟</span>
                         <h3 class="text-2xl font-pirate my-4">To Be Awesome</h3>
                         <p>Apply basic skills to create something truly magnificent!</p>
                     </div>
-                 </div>
+                </div>
             </div>
         </section>
     </main>
@@ -415,5 +485,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>
